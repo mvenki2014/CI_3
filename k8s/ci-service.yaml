@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: voting-service
+    labels:
+        name: ci3-web-service
+        app: demo-ci3-web
+spec:
+    type: LoadBalancer
+    ports:
+        - port: 80
+          targetPort: 80
+    selector:
+        name: ci3-web-pod
+        app: demo-ci3-web

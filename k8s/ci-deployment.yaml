@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: ci3-web-deploy
+    labels:
+        name: ci3-web-deploy
+        app: demo-ci3-web
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            name: ci3-web-pod
+            app: demo-ci3-web
+
+    template:
+        metadata:
+            name: ci3-web-pod
+            labels:
+                name: ci3-web-pod
+                app: demo-ci3-web
+        spec:
+            containers:
+                - name: ci3-web
+                  image: ci_3-web:latest
+                  ports:
+                      - containerPort: 80
