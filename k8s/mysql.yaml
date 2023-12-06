@@ -4,19 +4,19 @@ metadata:
     name: mysql-deploy
     labels:
         name: mysql-deploy
-        app: ci-app
+        app: demo-ci-app
 spec:
     replicas: 1
     selector:
         matchLabels:
             name: mysql-pod
-            app: ci-app
+            app: demo-ci-app
     template:
         metadata:
             name: mysql-pod
             labels:
                 name: mysql-pod
-                app: ci-app
+                app: demo-ci-app
         spec:
             containers:
                 -   name: mysql
@@ -40,7 +40,7 @@ metadata:
     name: mysql-service
     labels:
         name: mysql-service
-        app: ci-app
+        app: demo-ci-app
 spec:
     type: LoadBalancer
     ports:
@@ -49,4 +49,4 @@ spec:
             protocol: TCP
     selector:
         name: mysql-pod
-        app: ci-app
+        app: demo-ci-app

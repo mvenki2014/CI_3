@@ -20,16 +20,20 @@ metadata:
     name: phpmyadmin-deploy
     labels:
         name: phpmyadmin-deploy
-        app: ci-app
+        app: demo-ci-app
 spec:
     replicas: 1
     selector:
         matchLabels:
-            app: ci-app
+            name: phpmyadmin-pod
+            app: demo-ci-app
+
     template:
         metadata:
+            name: phpmyadmin-pod
             labels:
-                app: ci-app
+                name: phpmyadmin-pod
+                app: demo-ci-app
         spec:
             volumes:
                 -   name: phpmyadmin-config-volume
@@ -57,10 +61,14 @@ apiVersion: v1
 kind: Service
 metadata:
     name: phpmyadmin-service
+    labels:
+        name: phpmyadmin-service
+        app: demo-ci-app
 spec:
-    type: LoadBalancer
+    type: NodePort
     selector:
-        app: ci-app
+        name: phpmyadmin-pod
+        app: demo-ci-app
     ports:
         -   protocol: TCP
             port: 8081

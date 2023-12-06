@@ -1,36 +1,44 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ci-app-deploy
-  labels:
     name: ci-app-deploy
-    app: ci-app
+    labels:
+        name: ci-app-deploy
+        app: demo-ci-app
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: ci-app
-  template:
-    metadata:
-      labels:
-        app: ci-app
-    spec:
-      containers:
-      - name: ci-app
-        image: {{REGISTRY_BASE_PATH}}/ci-app:{{COMMIT}}
-        ports:
-        - containerPort: 8282
-        imagePullPolicy: Always
+    replicas: 1
+    selector:
+        matchLabels:
+            name: ci-app-pod
+            app: demo-ci-app
+
+    template:
+        metadata:
+            name: ci-app-pod
+            labels:
+                name: ci-app-pod
+                app: demo-ci-app
+        spec:
+            containers:
+                -   name: ci-app
+                    image: {{REGISTRY_BASE_PATH}}/ci-app:{{COMMIT}}
+                    imagePullPolicy: Always
+                    ports:
+                        -   containerPort: 8282
 ---
 apiVersion: v1
 kind: Service
 metadata:
     name: ci-app-service
+    labels:
+        name: ci-app-service
+        app: demo-ci-app
 spec:
-    selector:
-        app: ci-app
     type: NodePort
+    selector:
+        app: demo-ci-app
+        name: ci-app-pod
     ports:
-        - protocol: TCP
-          port: 8282
-          targetPort: 80
+        -   protocol: TCP
+            port: 8282
+            targetPort: 80
