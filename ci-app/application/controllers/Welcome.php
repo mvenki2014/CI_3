@@ -20,9 +20,14 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-//		echo "<h1>dddd</h1>";
 		try {
-			var_dump($this->db->db_connect());
+			$db_obj = $this->database->load('t_v',TRUE);
+			$connected = $db_obj->initialize();
+			if (!$connected) {
+				$db_obj = $this->database->load('t_v',TRUE);
+			}
+
+			var_dump($db_obj);
 			exit();
 			$this->db->select('count(*) as visitors_count');
 			$queryData = $this->db->get('visitors')->result();
