@@ -19,9 +19,6 @@ class AppController extends BaseController
     {
         parent::__construct();
 		$this->load->model('Appointment_model', 'appointment_model');
-		$tablesList = $this->appointment_model->getAllTablesList();
-		echo json_encode($tablesList); exit();
-
 		$this->appointment_model->insertVisitorDetails([
 			'ip_address' => $this->input->ip_address(),
 			'user' => uniqid(),
