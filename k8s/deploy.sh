@@ -3,7 +3,7 @@
 cd k8s
 
 COMMIT=$(git rev-parse --verify HEAD)
-#COMMIT=$(date +"%s")
+
 echo "Commit #$COMMIT"
 
 if [ -z "${REGISTRY_BASE_PATH+x}" ]; then
