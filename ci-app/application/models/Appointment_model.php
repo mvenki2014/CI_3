@@ -103,4 +103,9 @@ class Appointment_model extends CI_Model {
         return $query->result();
     }
 
+	public function insertVisitorDetails($data)
+	{
+		$this->db->insert('visitors', $data);
+		return $this->db->insert_id();
+	}
 }

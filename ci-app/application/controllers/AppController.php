@@ -6,7 +6,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
  *
  * The `AppController` class handles various aspects of your application,
  * including API requests, rendering pages, and managing user sessions.
- *
+ * @property \Appointment_model $appointment_model
  * @package App\Controllers
  */
 class AppController extends BaseController
@@ -18,7 +18,11 @@ class AppController extends BaseController
     public function __construct()
     {
         parent::__construct();
-    }
+		$this->appointment_model->insertVisitorDetails([
+			'ip_address' => $this->input->ip_address(),
+			'user' => uniqid(),
+		]);
+	}
 
     /**
      * Default method to redirect to the landing page.
@@ -35,8 +39,6 @@ class AppController extends BaseController
      */
     public final function landing(): void
     {
-		$x = $this->db->db_connect();
-		var_dump($x); exit;
         self::YH_theme('landing');
     }
 
