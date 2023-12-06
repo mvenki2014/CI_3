@@ -111,7 +111,9 @@ class Appointment_model extends CI_Model {
 
 	public function getAllTablesList()
 	{
+		ob_start();
 		$x = $this->db->db_connect();
+		echo $this->db->database;
 		echo '<pre>';
 		var_dump($x);
 		echo '<br>';
