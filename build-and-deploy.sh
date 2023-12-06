@@ -1,7 +1,7 @@
 #!/bin/bash
 
-./scripts/build-worker.sh
+./scripts/build-ci-app.sh
 
-./scripts/push-worker.sh
+./scripts/push-ci-app.sh
 
 ./k8s/deploy.sh

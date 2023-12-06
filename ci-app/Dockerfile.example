@@ -3,7 +3,6 @@ FROM php:7.4-apache
 
 # Set environment variables
 ENV PHPMYADMIN_VERSION=5.1.1
-ENV PHPMYADMIN_SHA256=83b3bfeac9e13e314c13d0fe6a4fe68d5c0e6d58fc7ce6f3641cebdff15d660e
 
 # Install dependencies
 RUN apt-get update \

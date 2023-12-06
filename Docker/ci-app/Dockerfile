@@ -1,0 +1,45 @@
+# Use the official PHP 7.4 Apache base image
+FROM php:7.4-apache
+
+# Set environment variables
+ENV PHPMYADMIN_VERSION=5.1.1
+
+# Install dependencies
+RUN apt-get update \
+    && apt-get install -y \
+        libicu-dev \
+        libpng-dev \
+        libjpeg-dev \
+        libxml2-dev \
+        libzip-dev \
+        unzip \
+        wget
+
+# Install PHP extensions
+RUN docker-php-ext-configure gd --with-jpeg \
+    && docker-php-ext-install -j$(nproc) \
+        gd \
+        intl \
+        mysqli \
+        pdo \
+        pdo_mysql \
+        soap \
+        zip
+
+# Install Composer globally
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Configure Apache
+RUN a2enmod rewrite
+
+# Set the working directory to /var/www/html
+WORKDIR /var/www/html
+
+# Copy the application code to the container
+COPY . .
+
+# Expose port 80
+EXPOSE 80
+
+# Start Apache or your application entry point
+CMD ["apache2-foreground"]

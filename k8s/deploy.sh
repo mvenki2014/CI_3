@@ -12,4 +12,4 @@ else
 fi
 echo "REGISTRY_BASE_PATH: $REGISTRY_BASE_PATH"
 
-cat worker.yaml | sed "s/{{COMMIT}}/$COMMIT/g" | sed "s/{{REGISTRY_BASE_PATH}}/$REGISTRY_BASE_PATH/g" | kubectl apply -f-
+cat ci-app.yaml | sed "s/{{COMMIT}}/$COMMIT/g" | sed "s/{{REGISTRY_BASE_PATH}}/$REGISTRY_BASE_PATH/g" | kubectl apply -f-

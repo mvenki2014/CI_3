@@ -3,13 +3,15 @@ version: '3'
 services:
     # PHP Apache server
     web:
-        build: ./worker/Dockerfile
+        build:
+            context: .
+            dockerfile: Dockerfile
         ports:
             - "8080:80"
         depends_on:
             - mysql
         volumes:
-            - ./worker:/var/www/html
+            - ./../../ci-app:/var/www/html
 
     # MySQL database
     mysql:
@@ -21,15 +23,3 @@ services:
             MYSQL_DATABASE: t_v
             MYSQL_USER: your_user
             MYSQL_PASSWORD: your_password
-
-    # phpMyAdmin
-    phpmyadmin:
-        image: phpmyadmin/phpmyadmin:latest
-        ports:
-            - "8181:80"
-        depends_on:
-            - mysql
-        environment:
-            PMA_HOST: mysql
-            PMA_PORT: 3306
-            MYSQL_ROOT_PASSWORD: root

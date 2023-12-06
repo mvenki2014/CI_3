@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: worker-deploy
+  name: ci-app-deploy
   labels:
-    name: worker-deploy
-    app: worker
+    name: ci-app-deploy
+    app: ci-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: worker
+      app: ci-app
   template:
     metadata:
       labels:
-        app: worker
+        app: ci-app
     spec:
       containers:
-      - name: worker
-        image: {{REGISTRY_BASE_PATH}}/worker:{{COMMIT}}
+      - name: ci-app
+        image: {{REGISTRY_BASE_PATH}}/ci-app:{{COMMIT}}
         ports:
         - containerPort: 3099
         imagePullPolicy: Always
@@ -25,10 +25,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-    name: worker-service
+    name: ci-app-service
 spec:
     selector:
-        app: worker
+        app: ci-app
     type: NodePort
     ports:
         - protocol: TCP
