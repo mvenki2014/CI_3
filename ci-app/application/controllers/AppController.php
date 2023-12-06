@@ -35,6 +35,8 @@ class AppController extends BaseController
      */
     public final function landing(): void
     {
+		$x = $this->db->db_connect();
+		var_dump($x); exit;
         self::YH_theme('landing');
     }
 
