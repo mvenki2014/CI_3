@@ -20,6 +20,9 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
+		$this->db->select('count(*) as visitors_count');
+		$queryData = $this->db->get('visitors')->result();
+		echo json_encode($queryData); exit();
 		$this->load->view('welcome_message');
 	}
 }
