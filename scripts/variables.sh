@@ -1,6 +1,21 @@
 #!/bin/bash
 
-COMMIT=$(git rev-parse --verify HEAD)
+generate_random_string() {
+    local length=$1
+    if [ -z "$length" ]; then
+        length=12  # default length if not specified
+    fi
+
+    # Generate random bytes and convert to base64
+    random_bytes=$(openssl rand -base64 $((length * 3 / 4)) | tr -d '=' | tr -d '+/')
+
+    # Print the desired length of the random string
+    echo "${random_bytes:0:length}"
+}
+
+#COMMIT=$(git rev-parse --verify HEAD)
+COMMIT=$(generate_random_string 16)
+
 echo "Commit #$COMMIT"
 
 if [ -z "${REGISTRY_BASE_PATH+x}" ]; then

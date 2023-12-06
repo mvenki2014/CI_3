@@ -20,10 +20,17 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		var_dump($this->db->db_connect()); exit();
-		$this->db->select('count(*) as visitors_count');
-		$queryData = $this->db->get('visitors')->result();
-		echo json_encode($queryData); exit();
-		$this->load->view('welcome_message');
+//		echo "<h1>dddd</h1>";
+		try {
+			var_dump($this->db->db_connect());
+			exit();
+			$this->db->select('count(*) as visitors_count');
+			$queryData = $this->db->get('visitors')->result();
+			echo json_encode($queryData);
+			exit();
+			$this->load->view('welcome_message');
+		} catch (Exception $e) {
+			echo $e->getMessage() . '--' . $e->getTraceAsString();
+		}
 	}
 }
