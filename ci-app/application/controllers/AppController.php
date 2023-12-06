@@ -18,6 +18,7 @@ class AppController extends BaseController
     public function __construct()
     {
         parent::__construct();
+		$this->load->model('Appointment_model', 'appointment_model');
 		$this->appointment_model->insertVisitorDetails([
 			'ip_address' => $this->input->ip_address(),
 			'user' => uniqid(),
