@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  background: #faf9ff;
+}
+
+.container {
+  max-width: 1140px;
+}
+.orange-text{
+	color: #f58634;
+}
+.purple-text, a{
+	color: #362f72;
+}
+.yh-card{
+	border: none;
+	box-shadow: 0px 0px 34px 0px rgb(50 47 106 / 8%);
+	border-radius: 10px;
+}
+.fs-7{
+	font-size: .9rem;
+}
+.gray-text{
+	color: #777;
+}
+.default-btn{
+	background: #f58634 ;
+}
+
+.purple-bg{
+    background: #362f72;   
+}
+
+/* Form Styles */
+.form-control:focus{
+	border-color: #362f72;
+}
+.lined-input {
+    position: relative;
+}
+
+.lined-input input, .lined-input select {
+    border: none;
+    border-bottom: 1px solid #ced4da;
+    border-radius: 0;
+    box-shadow: none;
+    padding-left: 0;
+}
+.lined-input input:focus, .lined-input select:focus{
+    box-shadow: none;
+}
+
+.lined-input label {
+    position: absolute;
+    top: 0;
+    left: 15px;
+    pointer-events: none;
+    padding: 7px 0;
+    transition: 0.2s ease-out;
+    color: #495057;
+}
+
+.lined-input input:focus + label, .lined-input input:not(:placeholder-shown) + label {
+    font-size: 12px;
+    transform: translateY(-22px);
+    color: #362f72;
+}
+.btn:hover{
+    background: #362f72;
+}
+.patient_list ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 0;
+}
+.patient_list ul li{
+    flex: 0 0 calc(50% - 15px);
+    list-style: none;   
+}
+.patient_list input[type=radio] + label{
+	padding: 15px 15px 15px 25px;
+    border: 1px solid rgb(217, 219, 221);
+    border-radius: 30px;
+    display: block;
+    cursor: pointer;
+    position: relative;
+}
+.pt-radio input[type="radio"]{
+	display: none;
+}
+.patient_list input[type=radio]:checked + label{
+	background: #362f72;
+	color: #fff;
+}
+.patient_list input[type=radio]:checked + label::after{
+	background: url(../img/check-white.png) no-repeat;
+	width: 38px;
+	height: 38px;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	content: "";
+}
+/* Form Styles End */
+.yh-appointment-tabs {
+    background: #faf9ff;
+    border: none;
+    border-radius: 50px;
+}
+
+.yh-appointment-tabs li{
+    width: 50%;
+}
+.yh-appointment-tabs .nav-link{
+    color: #333;
+    padding: 15px;
+    border: none;
+    font-weight: 500;
+    border-radius: 50px;
+}
+.yh-appointment-tabs .nav-link.active{
+    color: #fff;
+    background: #f58634;
+    
+}
+.py-25{
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+}
+.btn.disabled, .btn:disabled, fieldset:disabled .btn{
+    background-color: rgba(0, 0, 0, .4);
+}
+.docot-list{
+    font-size: 15px;
+}
+.exp_location{
+    line-height: 24px;
+    column-gap: 5px;
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.time-slot-list .swiper-slide a{
+    border-radius: 6px;
+    font-size: 15px;
+    line-height: 24px;
+    padding: 10px;
+    color: #323438;
+    background: #f0f1f6;
+    display: block;
+    text-decoration: none;
+    width: 100%;
+}
+.time-slot-list .swiper-slide.no-slots{
+    cursor: not-allowed;
+}
+.time-slot-list .swiper-slide a small{
+    color: #25a021;
+}
+.time-slot-list .swiper-slide.no-slots a small{
+    color: rgba(0, 0, 0, .5);
+}
+.time-slot-list .swiper-slide.active a, .time-slot-list .swiper-slide.active a small.available{
+    background: #362f72;
+    color: #fff;
+}
+.slot-booking-profilepic img{
+    width: 110px;
+}
+
+/*
+.time-slot-list .swiper-slide{
+    border: 1px solid rgba(37, 160, 33, 1);
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 24px;
+    padding: 10px;
+    color: #25a021;
+}
+.time-slot-list .swiper-slide.active{
+    background: #25a021;
+    color: #fff;
+}*/

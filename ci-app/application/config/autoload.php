@@ -1,6 +1,5 @@
 <?php
-
-defined('BASEPATH') or exit('No direct script access allowed');
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------
@@ -52,14 +51,14 @@ $autoload['packages'] = array();
 |
 | Prototype:
 |
-|   $autoload['libraries'] = array('database', 'email', 'session');
+|	$autoload['libraries'] = array('database', 'email', 'session');
 |
 | You can also supply an alternative library name to be assigned
 | in the controller:
 |
-|   $autoload['libraries'] = array('user_agent' => 'ua');
+|	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('database', 'email', 'session', 'pagination', 'encrypt');
+$autoload['libraries'] = array('database', 'session');
 
 /*
 | -------------------------------------------------------------------
@@ -72,15 +71,15 @@ $autoload['libraries'] = array('database', 'email', 'session', 'pagination', 'en
 |
 | Prototype:
 |
-|   $autoload['drivers'] = array('cache');
+|	$autoload['drivers'] = array('cache');
 |
 | You can also supply an alternative property name to be assigned in
 | the controller:
 |
-|   $autoload['drivers'] = array('cache' => 'cch');
+|	$autoload['drivers'] = array('cache' => 'cch');
 |
 */
-$autoload['drivers'] = array();
+$autoload['drivers'] = array('cache');
 
 /*
 | -------------------------------------------------------------------
@@ -88,9 +87,9 @@ $autoload['drivers'] = array();
 | -------------------------------------------------------------------
 | Prototype:
 |
-|   $autoload['helper'] = array('url', 'file');
+|	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array('url', 'file', 'form', 'cookie', 'basic', 'log');
+$autoload['helper'] = array('url', 'utils');
 
 /*
 | -------------------------------------------------------------------
@@ -98,7 +97,7 @@ $autoload['helper'] = array('url', 'file', 'form', 'cookie', 'basic', 'log');
 | -------------------------------------------------------------------
 | Prototype:
 |
-|   $autoload['config'] = array('config1', 'config2');
+|	$autoload['config'] = array('config1', 'config2');
 |
 | NOTE: This item is intended for use ONLY if you have created custom
 | config files.  Otherwise, leave it blank.
@@ -112,7 +111,7 @@ $autoload['config'] = array();
 | -------------------------------------------------------------------
 | Prototype:
 |
-|   $autoload['language'] = array('lang1', 'lang2');
+|	$autoload['language'] = array('lang1', 'lang2');
 |
 | NOTE: Do not include the "_lang" part of your file.  For example
 | "codeigniter_lang.php" would be referenced as array('codeigniter');
@@ -126,39 +125,11 @@ $autoload['language'] = array();
 | -------------------------------------------------------------------
 | Prototype:
 |
-|   $autoload['model'] = array('first_model', 'second_model');
+|	$autoload['model'] = array('first_model', 'second_model');
 |
 | You can also supply an alternative model name to be assigned
 | in the controller:
 |
-|   $autoload['model'] = array('first_model' => 'first');
+|	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array(
-                        'database_model'        =>  'database',
-                        'admin_model'           =>  'admin',
-                        'categories_model'      =>  'categories',
-                        'cart_model'            =>  'cart',
-                        'common_model'          =>  'common',
-                        'customer_model'        =>  'customer',
-                        'countries_model'       =>  'countries',
-                        'dealer_model'          =>  'dealer',
-                        'email_model'           =>  'customemail',
-                        'gst_model'             =>  'gst',
-                        'order_model'           =>  'order',
-                        'payment_model'         =>  'payment',
-                        'product_model'         =>  'products',
-                        'products_model'        =>  'product',
-                        'sessions_model'        =>  'sessions',
-                        'settings_model'        =>  'settings',
-                        'shippingaddress_model' =>  'shippingaddress',
-                        'state_model'           =>  'state',
-                        'supplier_model'        =>  'supplier',
-                        'shop_model'            =>  'shop',
-                        'sms_model'             =>  'sms',
-                        'transactions_model'    =>  'transactions',
-                        'user_model'            =>  'user',
-                        'utils_model'           =>  'utils',
-                        'videos_model'          =>  'videos',
-                        'withdrawals_model'     =>  'withdrawals',
-                        'cron_model'            =>  'cron',
-                    );
+$autoload['model'] = array();

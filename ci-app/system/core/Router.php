@@ -489,11 +489,11 @@ class CI_Router {
 	{
 		if ($append !== TRUE OR empty($this->directory))
 		{
-			$this->directory = str_replace('.', '', trim($dir, '/')) . 'Router.php/';
+			$this->directory = str_replace('.', '', trim($dir, '/')).'/';
 		}
 		else
 		{
-			$this->directory .= str_replace('.', '', trim($dir, '/')) . 'Router.php/';
+			$this->directory .= str_replace('.', '', trim($dir, '/')).'/';
 		}
 	}
 

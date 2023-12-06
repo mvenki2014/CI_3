@@ -328,7 +328,7 @@ if ( ! function_exists('create_captcha'))
 		// -----------------------------------
 		//  Generate the image
 		// -----------------------------------
-		$img_url = rtrim($img_url, '/') . 'captcha_helper.php/';
+		$img_url = rtrim($img_url, '/').'/';
 
 		if (function_exists('imagejpeg'))
 		{

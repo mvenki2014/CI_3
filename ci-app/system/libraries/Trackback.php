@@ -471,7 +471,7 @@ class CI_Trackback {
 			$out .= $val.' ';
 			if (strlen($out) >= $n)
 			{
-				return Trackback . phprtrim($out) . $end_char;
+				return rtrim($out).$end_char;
 			}
 		}
 	}

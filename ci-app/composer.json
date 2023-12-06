@@ -1,20 +1,61 @@
 {
-	"description": "The CodeIgniter framework",
-	"name": "codeigniter/framework",
+	"description": "Yashoda Hospital Management System",
+	"name": "yashoda/framwork",
 	"type": "project",
+	"authors": [
+		{
+			"name": "Venkatesh.M",
+			"email": "mvenki2014@gmail.com"
+		}
+	],
 	"homepage": "https://codeigniter.com",
 	"license": "MIT",
-	"support": {
-		"forum": "http://forum.codeigniter.com/",
-		"wiki": "https://github.com/bcit-ci/CodeIgniter/wiki",
-		"slack": "https://codeigniterchat.slack.com",
-		"source": "https://github.com/bcit-ci/CodeIgniter"
+	"config": {
+		"bin-dir": "/usr/local/bin/composer/",
+		"allow-plugins": {
+			"php-http/discovery": true
+		}
 	},
 	"require": {
-		"php": ">=7.4"
+		"php": "^7.4",
+		"guzzlehttp/guzzle": "^7.8",
+		"ext-json": "*",
+		"mailgun/mailgun-php": "^3.6",
+		"symfony/http-client": "^5.4",
+		"nyholm/psr7": "^1.8",
+		"openpayu/openpayu" : "2.3.*"
+	},
+	"suggest": {
+		"paragonie/random_compat": "Provides better randomness in PHP 5.x"
+	},
+	"scripts": {
+		"test:coverage": [
+			"@putenv XDEBUG_MODE=coverage",
+			"phpunit --color=always --coverage-text --configuration tests/travis/sqlite.phpunit.xml"
+		]
 	},
 	"require-dev": {
 		"mikey179/vfsstream": "1.6.*",
 		"phpunit/phpunit": "4.* || 5.* || 9.*"
+	},
+	"autoload": {
+		"psr-4": {
+			"App\\Models\\": "application/models",
+			"App\\Controllers\\": "application/controllers",
+			"System\\Controllers\\": "system/core",
+			"App\\Libraries\\": "application/libraries",
+			"App\\Helpers\\": "application/helpers"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"tests\\": "tests"
+		},
+		"classmap": [
+			"application/libraries",
+			"application/controllers",
+			"system/core",
+			"application/helpers"
+		]
 	}
 }

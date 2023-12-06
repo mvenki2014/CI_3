@@ -1,0 +1,38 @@
+POST https://info.payu.in/merchant/postservice.php
+Content-Type: application/x-www-form-urlencoded
+
+key=2Rtzl1&command=generate_dynamic_bharat_qr&hash=54f1cb1fb9e0a9022a9833dcfb785713b0ed5653c26c31deb89cbac621880893dd195a3b49db728fd2239df8b720f64ad79196cb3e59f1ccd3206c5af9e17533&var1=%7B%22transactionId%22%3A%226561FB20519BD%22%2C%22transactionAmount%22%3A100%7D
+
+###
+POST {{host}}/Service.asmx/HelloWorld HTTP/1.1
+Host: yhws.yashodahospital.com
+Content-Type: application/x-www-form-urlencoded
+
+###
+GET {{host}}/Service.asmx/HelloWorld
+Host: yhws.yashodahospital.com
+Content-Type: application/json
+
+### GET Doctors
+POST {{host}}/Service.asmx/GetDoctors
+Content-Type: application/x-www-form-urlencoded
+
+loc=3&depart=30
+
+###
+POST {{host}}/Service.asmx/GetDocSlots2 HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+Doccd=3&loc=3&date=20-08-2023&authkey=
+
+###
+POST /api/v5/otp?template_id=6555862bd6fc0549dc1b6623&mobile=919014551553 HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+Authkey: 409998ASwT0GHrQ6554fbc9P1
+Host: control.msg91.com
+
+{
+  "otp": "1234"
+}
+
