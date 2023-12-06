@@ -1,43 +1,67 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: phpmyadmin-config
+data:
+    conf.inc.php: |
+        <?php
+        $cfg['Servers'][1]['host'] = 'mysql-service';
+        $cfg['Servers'][1]['port'] = '3306';
+        $cfg['Servers'][1]['user'] = 'root';
+        $cfg['Servers'][1]['password'] = 'root';
+        $cfg['Servers'][1]['auth_type'] = 'cookie';
+        $cfg['Servers'][1]['AllowNoPassword'] = true;
+        ?>
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: phpmyadmin-deploy
-  labels:
     name: phpmyadmin-deploy
-    app: ci-app
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: ci-app
-  template:
-    metadata:
-      labels:
+    labels:
+        name: phpmyadmin-deploy
         app: ci-app
-    spec:
-      containers:
-      - name: phpmyadmin
-        image: phpmyadmin/phpmyadmin:latest
-        ports:
-        - containerPort: 80
-        imagePullPolicy: Always
-        env:
-            - name: PMA_HOST
-              value: "mysql-service"
-            - name: PMA_PORT
-              value: "3306"
-            - name: MYSQL_ROOT_PASSWORD
-              value: "root"
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: ci-app
+    template:
+        metadata:
+            labels:
+                app: ci-app
+        spec:
+            volumes:
+                -   name: phpmyadmin-config-volume
+                    configMap:
+                        name: phpmyadmin-config
+            containers:
+                -   name: phpmyadmin
+                    image: phpmyadmin/phpmyadmin:latest
+                    ports:
+                        -   containerPort: 80
+                    imagePullPolicy: Always
+                    env:
+                        -   name: PMA_HOST
+                            value: "mysql-service"
+                        -   name: PMA_PORT
+                            value: "3306"
+                        -   name: MYSQL_ROOT_PASSWORD
+                            value: "root"
+                    volumeMounts:
+                        -   name: phpmyadmin-config-volume
+                            mountPath: /etc/phpmyadmin/config.inc.php
+                            subPath: conf.inc.php
 ---
 apiVersion: v1
 kind: Service
 metadata:
     name: phpmyadmin-service
 spec:
+    type: LoadBalancer
     selector:
         app: ci-app
-    type: NodePort
     ports:
-        - protocol: TCP
-          port: 8081
-          targetPort: 80
+        -   protocol: TCP
+            port: 8081
+            targetPort: 80
