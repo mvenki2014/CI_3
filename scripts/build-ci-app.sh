@@ -12,7 +12,6 @@ echo "Build and push ci-app #$COMMIT and latest"
 az acr build \
 		--image "$REGISTRY_BASE_PATH/ci-app:${COMMIT}" \
 		--image "$REGISTRY_BASE_PATH/ci-app:latest" \
-		--registry "$REGISTRY_BASE_PATH" \
-		--file "./ci-app/."
+		--registry "$REGISTRY_BASE_PATH" ./ci-app/.
 
 cd ..
