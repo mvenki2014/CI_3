@@ -31,7 +31,8 @@ class AppController extends BaseController
      */
     public final function index(): void
     {
-        redirect(base_url('AppController/landing'));
+//        redirect(base_url('AppController/landing'));
+		echo json_encode(['status' => 1, 'message' => "Api Working", "error" => 0]);
     }
 
     /**
