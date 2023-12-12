@@ -34,7 +34,7 @@ metadata:
         name: ci-app-service
         app: demo-ci-app
 spec:
-    type: NodePort
+    type: LoadBalancer
     selector:
         app: demo-ci-app
         name: ci-app-pod
