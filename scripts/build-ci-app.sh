@@ -11,8 +11,6 @@ then
       --build-arg "app_name=ci-app" \
       -t "$REGISTRY_BASE_PATH/ci-app:${COMMIT}" \
       -t "$REGISTRY_BASE_PATH/ci-app:latest"
-
-		./scripts/push-ci-app.sh
 else
    az acr build \
    		--image "$REGISTRY_BASE_PATH/ci-app:${COMMIT}" \

@@ -38,6 +38,13 @@ WORKDIR /var/www/html
 # Copy the application code to the container
 COPY . .
 
+#composer get version
+RUN composer -V
+
+RUN echo pwd
+#composer install
+RUN composer install
+
 # Expose port 80
 EXPOSE 80
 
