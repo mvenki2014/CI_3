@@ -14,5 +14,4 @@ az acr build \
 		--image "$REGISTRY_BASE_PATH/ci-app:latest" \
 		--registry "$REGISTRY_BASE_PATH" \
 		--file "ci-app/Dockerfile" \
-		--build-arg "app_name=ci-app" \
 cd ..
