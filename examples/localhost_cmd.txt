@@ -8,3 +8,5 @@ az aks update -n php -g az-p --attach-acr waazcr
 az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acr-name>
 //detach
 az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acr-name>
+
+az acr build --image tsr/hello-worldspring-boot-db2:v1 --registry tsrContainerRegistry --file Dockerfile
