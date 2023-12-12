@@ -14,6 +14,6 @@ az acr build --file "Dockerfile" \
   --build-arg "app_name=ci-app" \
   --image "$REGISTRY_BASE_PATH/ci-app:${COMMIT}" \
   --image "$REGISTRY_BASE_PATH/ci-app:latest" \
-  --registry waazcr \
+  --registry "$REGISTRY_BASE_PATH" \
 
 cd ..
