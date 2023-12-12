@@ -65,7 +65,7 @@ metadata:
         name: phpmyadmin-service
         app: demo-ci-app
 spec:
-    type: NodePort
+    type: LoadBalancer
     selector:
         name: phpmyadmin-pod
         app: demo-ci-app
