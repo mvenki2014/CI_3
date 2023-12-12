@@ -10,3 +10,6 @@ az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acr-name>
 az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acr-name>
 
 az acr build --image tsr/hello-worldspring-boot-db2:v1 --registry tsrContainerRegistry --file Dockerfile
+
+// working
+az acr build --image "waazcr.azurecr.io/ci-app:v1" --registry waazcr.azurecr.io ./ci-app/.
